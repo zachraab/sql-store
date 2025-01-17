@@ -1,8 +1,12 @@
-export const generateMetadata = ({ params }) => {
+export const generateMetadata = async ({ params }) => {
 	return {
-		title: `Product ${params.productId}`
+		title: `Product ${(await params).productId}`
 	}
 }
-export default function ProductDetails({ params }) {
-	return <h1>Details about product {params.productId}</h1>
+export default async function ProductDetails({ params }) {
+	return (
+		<>
+			<h1>Details about product {(await params).productId}</h1>
+		</>
+	)
 }

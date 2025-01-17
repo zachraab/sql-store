@@ -8,7 +8,7 @@ export default function ProductList() {
 			<h1 className="text-xl font-bold">Product List:</h1>
 			<div className="flex flex-col">
 			{productArray.map((product, index) => (
-				<Link className="hover:underline max-w-max" href={`/products/${index + 1}`}>{product}</Link>
+				<Link className="hover:underline max-w-max" href={`/products/${index + 1}`} key={index}>{product}</Link>
 			))}
 			</div>
 		</div>
