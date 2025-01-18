@@ -6,12 +6,12 @@ export async function GET(
     request:  NextRequest,
     { params }: { params: { slug: string } }
 ) {
-    const slug = params.slug // user id
+    const slug = params.slug // product id
     
     try {
         const db = await pool.getConnection()        
         
-        const query = 'SELECT * FROM users WHERE user_id = ?'
+        const query = 'SELECT * FROM products WHERE product_id = ?'
         const [rows] = await db.execute(query,[slug])
         db.release()
         

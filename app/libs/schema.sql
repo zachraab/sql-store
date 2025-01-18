@@ -1,23 +1,45 @@
 DROP DATABASE IF EXISTS zach_sql_store_db;
-
 CREATE DATABASE zach_sql_store_db;
+USE zach_sql_store_db;
 
--- Create the table (if it doesn't already exist)
+
+DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY, -- Added ID as the primary key
-    email VARCHAR(255) NOT NULL UNIQUE, -- Ensured email is unique
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    isadmin BOOLEAN NOT NULL
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
 );
+INSERT INTO users (email, first_name, last_name)
+VALUES
+    ('john.doe@example.com', 'John', 'Doe'),
+    ('jane.smith@example.com', 'Jane', 'Smith'),
+    ('alice.johnson@example.com', 'Alice', 'Johnson'),
+    ('bob.brown@example.com', 'Bob', 'Brown'),
+    ('charlie.davis@example.com', 'Charlie', 'Davis'),
+    ('emily.wilson@example.com', 'Emily', 'Wilson'),
+    ('david.miller@example.com', 'David', 'Miller'),
+    ('susan.moore@example.com', 'Susan', 'Moore'),
+    ('michael.taylor@example.com', 'Michael', 'Taylor'),
+    ('lisa.jones@example.com', 'Lisa', 'Jones');
 
--- Seed database
-INSERT INTO users (email, username, password, isadmin) VALUES
-('john.doe@example.com', 'johndoe', 'password123', 0),
-('jane.doe@example.com', 'janedoe', 'securepass456', 1),
-('admin@example.com', 'adminuser', 'adminpassword', 1),
-('user1@example.com', 'user1', 'mypassword', 0),
-('user2@example.com', 'user2', 'anotherpassword', 0),
-('moderator@example.com', 'moderator', 'modpassword', 1);
 
-SELECT * FROM users;
+DROP TABLE IF EXISTS products;
+CREATE TABLE IF NOT EXISTS products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    stock INT NOT NULL
+);
+INSERT INTO products (product_name, price, stock)
+VALUES
+    ('Apple', 1, 100),
+    ('Banana', 0.5, 150),
+    ('Orange', 0.8, 120),
+    ('Grapes', 2, 80),
+    ('Pineapple', 3, 50),
+    ('Mango', 1.5, 200),
+    ('Strawberry', 2.5, 60),
+    ('Blueberry', 3, 40),
+    ('Peach', 1.2, 90),
+    ('Watermelon', 5, 30);
